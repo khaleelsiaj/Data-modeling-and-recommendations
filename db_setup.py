@@ -21,7 +21,7 @@ logging.getLogger().addHandler(fh)
 
 # defining credintials
 
-DB_NAME = "sexy"
+DB_NAME = "retail_db"
 DB_USER = "postgres"
 DB_PASSWORD = "123"
 DB_HOST = "localhost"
@@ -58,10 +58,60 @@ finally:
         cur.close()
     logging.debug("Database connection closed")
 
-# create the database
 
-# create the tables
+# Establish a new connection to the created database and create the tables
+try:
+    logging.debug(f"Attempting to connect to {DB_NAME}...")
+    conn = psycopg2.connect(
+        dbname=DB_NAME, user=DB_USER, host=DB_HOST, password=DB_PASSWORD
+    )
+    conn.autocommit = True
+    cur = conn.cursor()
+    logging.info(f"{DB_NAME} connected successfully!")
 
+    create_tables_sql = """
+    CREATE TABLE IF NOT EXISTS customer (
+                CustomerID INTEGER PRIMARY KEY, 
+                Country VARCHAR(50)
+                );
+
+    CREATE TABLE IF NOT EXISTS invoice ( 
+                InvoiceNo INTEGER PRIMARY KEY,
+                CustomerID INTEGER,
+                InvoiceDate TIMESTAMP, 
+                FOREIGN KEY (CustomerID) REFERENCES customer(CustomerID) ON DELETE CASCADE
+                );
+
+    CREATE TABLE IF NOT EXISTS product (
+                StockCode VARCHAR(6) PRIMARY KEY,
+                UnitPrice NUMERIC(10,2),
+                Description Text
+                );
+
+    CREATE TABLE IF NOT EXISTS invoice_details (
+                InvoiceNO INTEGER, 
+                StockCode VARCHAR(6),
+                Quantity SMALLINT, 
+                PRIMARY KEY(InvoiceNo, StockCode),
+                FOREIGN KEY (InvoiceNO) REFERENCES invoice(InvoiceNo) ON DELETE CASCADE, 
+                FOREIGN KEY (StockCode) REFERENCES product(StockCode) ON DELETE CASCADE
+                );
+    
+    """
+    logging.debug("Executing tables creation query")
+    cur.execute(create_tables_sql)
+    logging.info("Tables created successfully!")
+
+except psycopg2.Error as e:
+    logging.error(f"Tables creation failed {e}")
+    print(e)
+
+finally:
+    if conn:
+        conn.close()
+    if cur:
+        cur.close()
+    logging.debug("Database conncetion closed")
 # make the connections
 
 # close connection
