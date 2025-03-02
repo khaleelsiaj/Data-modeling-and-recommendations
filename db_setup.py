@@ -28,90 +28,97 @@ DB_HOST = "localhost"
 DEFAULT_DB = "postgres"
 
 
-# establish a connection
-logging.debug("Attempting to connect to postgres database")
-try:
-    conn = psycopg2.connect(
-        dbname=DEFAULT_DB, user=DB_USER, password=DB_PASSWORD, host=DB_HOST
-    )
-    conn.autocommit = True
+def connect_to_db(db_name):
+    try:
+        logging.debug(f"Attempting to connect to {db_name} ...")
+        conn = psycopg2.connect(
+            dbname=db_name, user=DB_USER, host=DB_HOST, password=DB_PASSWORD
+        )
+        logging.debug(f"Connected successfully to {db_name}")
+        conn.autocommit = True
+        return conn
+    except psycopg2.Error as e:
+        logging.error(f"Connection error: {e}")
+
+
+def database_exists(conn, db_name):
     cur = conn.cursor()
+    cur.execute("SELECT 1 FROM pg_database WHERE datname = %s", (db_name,))
+    exists = cur.fetchone()
+    cur.close()
+    return True if exists else False
 
-    logging.info("Database connected successfully, cursor was obtained!")
 
-    # Create the Database
-    cur.execute("SELECT 1 FROM pg_database where datname = %s;", (DB_NAME,))
-    exist = cur.fetchone()
-    if exist:
-        logging.warning("Database already exists")
+# establish a connection
+def create_db():
+    conn = connect_to_db(DEFAULT_DB)
+
+    if not conn:
+        return
+
+    if database_exists(conn, DB_NAME):
+        logging.error(f"Database {DB_NAME} already exists")
+
     else:
-        cur.execute(sql.SQL("CREATE DATABASE {}").format(sql.Identifier(DB_NAME)))
-        logging.info("Database Created!")
-
-except psycopg2.Error as e:
-    logging.error(f"Database connection failed: {e}")
-
-finally:
-    if conn:
-        conn.close()
-    if cur:
+        cur = conn.cursor()
+        cur.execute(sql.SQL("CREATE TABLE {}").format(sql.Identifier(DB_NAME)))
+        logging.info(f"Database {DB_NAME} created!")
         cur.close()
-    logging.debug("Database connection closed")
+    conn.close()
 
 
 # Establish a new connection to the created database and create the tables
-try:
-    logging.debug(f"Attempting to connect to {DB_NAME}...")
-    conn = psycopg2.connect(
-        dbname=DB_NAME, user=DB_USER, host=DB_HOST, password=DB_PASSWORD
-    )
-    conn.autocommit = True
-    cur = conn.cursor()
-    logging.info(f"{DB_NAME} connected successfully!")
+def create_tables():
+    try:
+        conn = connect_to_db(DB_NAME)
+        if not conn:
+            return
+        cur = conn.cursor()
 
-    create_tables_sql = """
-    CREATE TABLE IF NOT EXISTS customer (
-                CustomerID INTEGER PRIMARY KEY, 
-                Country VARCHAR(50)
-                );
+        create_tables_sql = """
+        CREATE TABLE IF NOT EXISTS customer (
+                    CustomerID INTEGER PRIMARY KEY,
+                    Country VARCHAR(50)
+                    );
 
-    CREATE TABLE IF NOT EXISTS invoice ( 
-                InvoiceNo INTEGER PRIMARY KEY,
-                CustomerID INTEGER,
-                InvoiceDate TIMESTAMP, 
-                FOREIGN KEY (CustomerID) REFERENCES customer(CustomerID) ON DELETE CASCADE
-                );
+        CREATE TABLE IF NOT EXISTS invoice (
+                    InvoiceNo INTEGER PRIMARY KEY,
+                    CustomerID INTEGER,
+                    InvoiceDate TIMESTAMP,
+                    FOREIGN KEY (CustomerID) REFERENCES customer(CustomerID) ON DELETE CASCADE
+                    );
 
-    CREATE TABLE IF NOT EXISTS product (
-                StockCode VARCHAR(6) PRIMARY KEY,
-                UnitPrice NUMERIC(10,2),
-                Description Text
-                );
+        CREATE TABLE IF NOT EXISTS product (
+                    StockCode VARCHAR(6) PRIMARY KEY,
+                    UnitPrice NUMERIC(10,2),
+                    Description Text
+                    );
 
-    CREATE TABLE IF NOT EXISTS invoice_details (
-                InvoiceNO INTEGER, 
-                StockCode VARCHAR(6),
-                Quantity SMALLINT, 
-                PRIMARY KEY(InvoiceNo, StockCode),
-                FOREIGN KEY (InvoiceNO) REFERENCES invoice(InvoiceNo) ON DELETE CASCADE, 
-                FOREIGN KEY (StockCode) REFERENCES product(StockCode) ON DELETE CASCADE
-                );
-    
-    """
-    logging.debug("Executing tables creation query")
-    cur.execute(create_tables_sql)
-    logging.info("Tables created successfully!")
+        CREATE TABLE IF NOT EXISTS invoice_details (
+                    InvoiceNO INTEGER,
+                    StockCode VARCHAR(6),
+                    Quantity SMALLINT,
+                    PRIMARY KEY(InvoiceNo, StockCode),
+                    FOREIGN KEY (InvoiceNO) REFERENCES invoice(InvoiceNo) ON DELETE CASCADE,
+                    FOREIGN KEY (StockCode) REFERENCES product(StockCode) ON DELETE CASCADE
+                    );
 
-except psycopg2.Error as e:
-    logging.error(f"Tables creation failed {e}")
-    print(e)
+        """
+        logging.debug("Executing tables creation query")
+        cur.execute(create_tables_sql)
+        logging.info("Tables created successfully!")
 
-finally:
-    if conn:
-        conn.close()
-    if cur:
-        cur.close()
-    logging.debug("Database conncetion closed")
-# make the connections
+    except psycopg2.Error as e:
+        logging.error(f"Tables creation failed {e}")
+        print(e)
 
-# close connection
+    finally:
+        if conn:
+            conn.close()
+        if cur:
+            cur.close()
+        logging.debug("Database conncetion closed")
+
+
+create_db()
+create_tables()
