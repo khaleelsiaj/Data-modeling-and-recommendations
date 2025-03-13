@@ -32,7 +32,6 @@ def connect_to_db(dbname_override=None):
             config["dbname"] = dbname_override
         conn = psycopg2.connect(**config)
         logging.debug(f"Connected successfully to {config['dbname']}")
-        conn.autocommit = True
         return conn
     except psycopg2.Error as e:
         logging.error(f"Connection error: {e}")
@@ -49,9 +48,10 @@ def database_exists(conn, db_name):
 # establish a connection
 def create_db():
     conn = connect_to_db(DEFAULT_DB)
+    conn.autocommit = True
 
     if not conn:
-        return
+        return False
 
     if database_exists(conn, DB_CONFIG["dbname"]):
         logging.error(f"Database {DB_CONFIG['dbname']} already exists")
@@ -64,6 +64,7 @@ def create_db():
         logging.info(f"Database {DB_CONFIG['dbname']} created!")
         cur.close()
     conn.close()
+    return True
 
 
 # Establish a new connection to the created database and create the tables
@@ -107,9 +108,11 @@ def create_tables():
         """
         logging.debug("Executing tables creation query")
         cur.execute(create_tables_sql)
+        conn.commit()
         logging.info("Tables created successfully!")
 
     except psycopg2.Error as e:
+        cur.rollback()
         logging.error(f"Tables creation failed {e}")
         print(e)
 
@@ -122,5 +125,7 @@ def create_tables():
 
 
 if __name__ == "__main__":
-    create_db()
-    create_tables()
+    if create_db():
+        create_tables()
+    else:
+        logging.info("Skipped table creation as database was not created")
