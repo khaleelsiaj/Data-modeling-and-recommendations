@@ -75,7 +75,7 @@ def partition_data(df_cleaned):
     )
     product_df = product_df.drop_duplicates(subset=["StockCode"])
 
-    return customer_df, invoice_df, invoice_details_df, product_df
+    return customer_df, invoice_df, product_df, invoice_details_df
 
 
 def insert_with_copy(cur, df, table_name, columns):
@@ -89,64 +89,33 @@ def insert_with_copy(cur, df, table_name, columns):
     return rows_count
 
 
-def insert_data(dfs):
-    conn = connect_to_db()
-    if conn:
-        try:
-            customer_df = dfs[0]
-            invoice_df = dfs[1]
-            invoice_details_df = dfs[2]
-            product_df = dfs[3]
-            logging.debug(
-                "Data is being inserted into the tables, this might take a while..."
-            )
-            cur = conn.cursor()
-
-            # insert customer
-            rows_count = insert_with_copy(
-                cur, customer_df, "customer", ["customerid", "country"]
-            )
-            if rows_count != len(customer_df):
-                logging.warning(f"Expected {len(customer_df)} rows, got {rows_count}")
-
-            # insert invoice
-            rows_count = insert_with_copy(
-                cur, invoice_df, "invoice", ["invoiceno", "customerid", "invoicedate"]
-            )
-            if rows_count != len(invoice_df):
-                logging.warning(f"Expected {len(invoice_df)} rows, got {rows_count}")
-
-            # insert product
-            rows_count = insert_with_copy(
-                cur, product_df, "product", ["stockcode", "unitprice", "description"]
-            )
-            if rows_count != len(product_df):
-                logging.warning(f"Expected {len(product_df)} rows, got {rows_count}")
-
-            # insert invoice_details
-            rows_count = insert_with_copy(
-                cur,
-                invoice_details_df,
-                "invoice_details",
-                ["invoiceno", "stockcode", "quantity"],
-            )
-            if rows_count != len(invoice_details_df):
-                logging.warning(f"Expected {len(product_df)} rows, got {rows_count}")
-
-            conn.commit()
-            logging.info("All data committed successfully")
-
-        except psycopg2.Error as e:
-            conn.rollback()
-            logging.error(f"Unexpected Error: {e}")
-
-        finally:
-            cur.close()
-            conn.close()
+def insert_data(conn, dfs, table_configs):
+    cur = conn.cursor()
+    try:
+        for df, (table_name, columns) in zip(dfs, table_configs):
+            rows_count = insert_with_copy(cur, df, table_name, columns)
+            if rows_count != len(df):
+                logging.warning(f"Expected {len(df)} rows, got {rows_count}")
+        conn.commit()
+    except psycopg2.Error as e:
+        conn.rollback()
+        logging.error(f"Unexpected Error: {e}")
+    finally:
+        cur.close()
+        conn.close()
 
 
 if __name__ == "__main__":
+
+    table_configs = [
+        ("customer", ["customerid", "country"]),
+        ("invoice", ["invoiceno", "customerid", "invoicedate"]),
+        ("product", ["stockcode", "unitprice", "description"]),
+        ("invoice_details", ["invoiceno", "stockcode", "quantity"]),
+    ]
+    conn = connect_to_db()
+
     df = load_data()
     df_cleand = transform_data(df)
     dfs = partition_data(df_cleand)
-    insert_data(dfs)
+    insert_data(conn, dfs, table_configs)
