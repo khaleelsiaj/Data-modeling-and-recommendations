@@ -1,3 +1,4 @@
+import sys
 import io
 import psycopg2
 import pandas as pd
@@ -100,6 +101,7 @@ def insert_data(conn, dfs, table_configs):
     except psycopg2.Error as e:
         conn.rollback()
         logging.error(f"Unexpected Error: {e}")
+        sys.exit(1)
     finally:
         cur.close()
         conn.close()
