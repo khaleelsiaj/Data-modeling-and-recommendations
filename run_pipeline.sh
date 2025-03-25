@@ -21,6 +21,15 @@ else
 
 fi
 
+# check and load credintials
+if [ -f ".env" ]; then
+    export $(cat .env | xargs)
+    log "credintials imported"
+else
+    log "ERROR: .env file not found"
+    exit 1
+fi
+
 # run db_setup.py module
 log "Running db_setup.py"
 $PYTHON db_setup.py >/dev/null 2>&1

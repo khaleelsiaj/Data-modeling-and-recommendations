@@ -1654,3 +1654,670 @@ dtype: int64.
 2025-03-13 10:22:10,583 - root - INFO - Inserted 3958 rows into product
 2025-03-13 10:22:25,571 - root - INFO - Inserted 529771 rows into invoice_details
 2025-03-13 10:22:25,574 - root - INFO - All data committed successfully
+2025-03-14 04:08:10,331 - root - DEBUG - Attempting to connect to retail_db
+2025-03-14 04:08:10,355 - root - DEBUG - Connected successfully to retail_db
+2025-03-14 04:08:11,284 - root - INFO - Dataset read
+2025-03-14 04:08:11,558 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-14 04:08:11,617 - root - INFO - Identified 1454 corrupted rows.
+2025-03-14 04:08:11,715 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-14 04:08:12,464 - root - INFO - Identified 5268 duplicate rows.
+2025-03-14 04:08:12,464 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-14 04:08:12,934 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-14 04:08:12,998 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-14 04:08:13,225 - root - INFO - Inserted 4372 rows into customer
+2025-03-14 04:08:13,680 - root - INFO - Inserted 24446 rows into invoice
+2025-03-14 04:08:13,712 - root - INFO - Inserted 3958 rows into product
+2025-03-14 04:08:28,428 - root - INFO - Inserted 529771 rows into invoice_details
+2025-03-14 04:11:54,172 - root - DEBUG - Attempting to connect to retail_db
+2025-03-14 04:11:54,195 - root - DEBUG - Connected successfully to retail_db
+2025-03-14 04:11:55,248 - root - INFO - Dataset read
+2025-03-14 04:11:55,547 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-14 04:11:55,609 - root - INFO - Identified 1454 corrupted rows.
+2025-03-14 04:11:55,715 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-14 04:11:56,500 - root - INFO - Identified 5268 duplicate rows.
+2025-03-14 04:11:56,500 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-14 04:11:56,971 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-14 04:11:57,036 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-14 04:11:57,266 - root - INFO - Inserted 4372 rows into customer
+2025-03-14 04:11:57,719 - root - INFO - Inserted 24446 rows into invoice
+2025-03-14 04:11:57,757 - root - INFO - Inserted 3958 rows into product
+2025-03-14 04:12:12,739 - root - INFO - Inserted 529771 rows into invoice_details
+2025-03-14 04:12:16,081 - root - DEBUG - Attempting to connect to retail_db
+2025-03-14 04:12:16,106 - root - DEBUG - Connected successfully to retail_db
+2025-03-14 04:12:17,110 - root - INFO - Dataset read
+2025-03-14 04:12:17,465 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-14 04:12:17,532 - root - INFO - Identified 1454 corrupted rows.
+2025-03-14 04:12:17,640 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-14 04:12:18,465 - root - INFO - Identified 5268 duplicate rows.
+2025-03-14 04:12:18,465 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-14 04:12:18,970 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-14 04:12:19,043 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-14 04:12:19,306 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-22 04:22:34,196 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 04:22:34,219 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 04:22:35,148 - root - INFO - Dataset read
+2025-03-22 04:22:35,414 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 04:22:35,471 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 04:22:35,565 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 04:22:36,327 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 04:22:36,328 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 04:22:36,794 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 04:22:36,858 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 04:22:37,082 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-22 04:51:20,563 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 04:51:20,585 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 04:51:21,507 - root - INFO - Dataset read
+2025-03-22 04:51:21,767 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 04:51:21,826 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 04:51:21,919 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 04:51:22,705 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 04:51:22,705 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 04:51:23,177 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 04:51:23,240 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 04:51:23,458 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-22 05:22:07,633 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 05:22:07,655 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 05:22:08,589 - root - INFO - Dataset read
+2025-03-22 05:22:08,854 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 05:22:08,911 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 05:22:09,005 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 05:22:09,757 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 05:22:09,757 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 05:22:10,246 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 05:22:10,312 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 05:22:10,531 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-22 05:22:33,182 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 05:22:33,208 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 05:22:34,138 - root - INFO - Dataset read
+2025-03-22 05:22:34,399 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 05:22:34,457 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 05:22:34,552 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 05:22:35,292 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 05:22:35,293 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 05:22:35,755 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 05:22:35,821 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 05:22:36,035 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-22 05:33:47,985 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 05:33:48,009 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 05:33:48,910 - root - INFO - Dataset read
+2025-03-22 05:33:49,173 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 05:33:49,230 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 05:33:49,325 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 05:33:50,066 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 05:33:50,066 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 05:33:50,534 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 05:33:50,596 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 05:33:50,817 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-22 05:34:21,169 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 05:34:21,187 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 05:34:22,092 - root - INFO - Dataset read
+2025-03-22 05:34:22,349 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 05:34:22,401 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 05:34:22,493 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 05:34:23,225 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 05:34:23,226 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 05:34:23,684 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 05:34:23,742 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 05:34:23,958 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-22 05:36:23,097 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 05:36:23,112 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 05:36:24,053 - root - INFO - Dataset read
+2025-03-22 05:36:24,334 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 05:36:24,398 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 05:36:24,501 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 05:36:25,285 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 05:36:25,286 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 05:36:25,759 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 05:36:25,825 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 05:36:26,063 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-22 05:36:34,021 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 05:36:34,044 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 05:36:34,962 - root - INFO - Dataset read
+2025-03-22 05:36:35,227 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 05:36:35,285 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 05:36:35,378 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 05:36:36,123 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 05:36:36,123 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 05:36:36,590 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 05:36:36,652 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 05:36:36,869 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-22 05:36:41,485 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 05:36:41,508 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 05:36:42,411 - root - INFO - Dataset read
+2025-03-22 05:36:42,670 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 05:36:42,725 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 05:36:42,824 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 05:36:43,555 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 05:36:43,555 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 05:36:44,027 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 05:36:44,088 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 05:36:44,299 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-22 05:37:27,923 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 05:37:27,943 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 05:37:28,852 - root - INFO - Dataset read
+2025-03-22 05:37:29,110 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 05:37:29,162 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 05:37:29,255 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 05:37:29,992 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 05:37:29,992 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 05:37:30,451 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 05:37:30,508 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 05:37:30,715 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-22 05:38:25,349 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 05:38:25,367 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 05:38:26,284 - root - INFO - Dataset read
+2025-03-22 05:38:26,543 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 05:38:26,598 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 05:38:26,690 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 05:38:27,439 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 05:38:27,440 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 05:38:27,908 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 05:38:27,966 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 05:38:28,175 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-22 05:38:37,395 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 05:38:37,413 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 05:38:38,334 - root - INFO - Dataset read
+2025-03-22 05:38:38,590 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 05:38:38,643 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 05:38:38,735 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 05:38:39,525 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 05:38:39,526 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 05:38:39,996 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 05:38:40,061 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 05:38:40,278 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-22 05:39:00,581 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 05:39:00,600 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 05:39:01,529 - root - INFO - Dataset read
+2025-03-22 05:39:01,791 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 05:39:01,850 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 05:39:01,940 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 05:39:02,675 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 05:39:02,675 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 05:39:03,141 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 05:39:03,200 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 05:39:03,407 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-22 05:42:39,890 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 05:42:39,906 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 05:42:40,856 - root - INFO - Dataset read
+2025-03-22 05:42:41,124 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 05:42:41,179 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 05:42:41,272 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 05:42:42,041 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 05:42:42,041 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 05:42:42,503 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 05:42:42,562 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 05:42:42,777 - root - INFO - Inserted 4372 rows into customer
+2025-03-22 05:42:43,216 - root - INFO - Inserted 24446 rows into invoice
+2025-03-22 05:42:43,245 - root - INFO - Inserted 3958 rows into product
+2025-03-22 05:42:57,679 - root - INFO - Inserted 529771 rows into invoice_details
+2025-03-22 05:49:17,796 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 05:49:17,819 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 05:49:18,727 - root - INFO - Dataset read
+2025-03-22 05:49:18,989 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 05:49:19,043 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 05:49:19,139 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 05:49:19,872 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 05:49:19,872 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 05:49:20,354 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 05:49:20,411 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 05:49:20,618 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-22 05:49:22,581 - root - DEBUG - Attempting to connect to retail_db
+2025-03-22 05:49:22,597 - root - DEBUG - Connected successfully to retail_db
+2025-03-22 05:49:23,508 - root - INFO - Dataset read
+2025-03-22 05:49:23,766 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-22 05:49:23,822 - root - INFO - Identified 1454 corrupted rows.
+2025-03-22 05:49:23,914 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-22 05:49:24,654 - root - INFO - Identified 5268 duplicate rows.
+2025-03-22 05:49:24,654 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-22 05:49:25,137 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-22 05:49:25,195 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-22 05:49:25,403 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-23 08:27:05,410 - root - DEBUG - Attempting to connect to postgres
+2025-03-23 08:27:05,431 - root - DEBUG - Connected successfully to postgres
+2025-03-23 08:27:06,542 - root - INFO - Dataset read
+2025-03-23 08:27:06,824 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-23 08:27:06,887 - root - INFO - Identified 1454 corrupted rows.
+2025-03-23 08:27:06,992 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-23 08:27:07,778 - root - INFO - Identified 5268 duplicate rows.
+2025-03-23 08:27:07,779 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-23 08:27:08,354 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-23 08:27:08,429 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-23 08:27:08,711 - root - INFO - Inserted 4372 rows into customer
+2025-03-23 08:27:09,177 - root - INFO - Inserted 24446 rows into invoice
+2025-03-23 08:27:09,208 - root - INFO - Inserted 3958 rows into product
+2025-03-23 08:27:24,210 - root - INFO - Inserted 529771 rows into invoice_details
+2025-03-25 09:49:10,012 - root - DEBUG - Attempting to connect to postgres
+2025-03-25 09:49:10,034 - root - DEBUG - Connected successfully to postgres
+2025-03-25 09:49:10,976 - root - INFO - Dataset read
+2025-03-25 09:49:11,237 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-25 09:49:11,289 - root - INFO - Identified 1454 corrupted rows.
+2025-03-25 09:49:11,384 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-25 09:49:12,140 - root - INFO - Identified 5268 duplicate rows.
+2025-03-25 09:49:12,140 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-25 09:49:12,605 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-25 09:49:12,666 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-25 09:49:12,875 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-25 09:52:02,976 - root - DEBUG - Attempting to connect to postgres
+2025-03-25 09:52:02,995 - root - DEBUG - Connected successfully to postgres
+2025-03-25 09:52:03,934 - root - INFO - Dataset read
+2025-03-25 09:52:04,212 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-25 09:52:04,268 - root - INFO - Identified 1454 corrupted rows.
+2025-03-25 09:52:04,369 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-25 09:52:05,168 - root - INFO - Identified 5268 duplicate rows.
+2025-03-25 09:52:05,169 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-25 09:52:05,682 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-25 09:52:05,741 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-25 09:52:05,966 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-25 09:53:48,512 - root - DEBUG - Attempting to connect to postgres
+2025-03-25 09:53:48,531 - root - DEBUG - Connected successfully to postgres
+2025-03-25 09:53:49,428 - root - INFO - Dataset read
+2025-03-25 09:53:49,699 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-25 09:53:49,751 - root - INFO - Identified 1454 corrupted rows.
+2025-03-25 09:53:49,841 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-25 09:53:50,561 - root - INFO - Identified 5268 duplicate rows.
+2025-03-25 09:53:50,561 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-25 09:53:51,022 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-25 09:53:51,079 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-25 09:53:51,285 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-25 09:54:02,112 - root - DEBUG - Attempting to connect to postgres
+2025-03-25 09:54:02,150 - root - DEBUG - Connected successfully to postgres
+2025-03-25 09:54:03,156 - root - INFO - Dataset read
+2025-03-25 09:54:03,421 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-25 09:54:03,486 - root - INFO - Identified 1454 corrupted rows.
+2025-03-25 09:54:03,593 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-25 09:54:04,352 - root - INFO - Identified 5268 duplicate rows.
+2025-03-25 09:54:04,353 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-25 09:54:04,844 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-25 09:54:04,908 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-25 09:54:05,131 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-25 09:54:42,381 - root - DEBUG - Attempting to connect to postgres
+2025-03-25 09:54:42,418 - root - DEBUG - Connected successfully to postgres
+2025-03-25 09:54:43,554 - root - INFO - Dataset read
+2025-03-25 09:54:43,891 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-25 09:54:43,955 - root - INFO - Identified 1454 corrupted rows.
+2025-03-25 09:54:44,076 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-25 09:54:45,094 - root - INFO - Identified 5268 duplicate rows.
+2025-03-25 09:54:45,094 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-25 09:54:45,619 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-25 09:54:45,689 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-25 09:54:45,910 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-25 09:59:26,707 - root - DEBUG - Attempting to connect to postgres
+2025-03-25 09:59:26,726 - root - DEBUG - Connected successfully to postgres
+2025-03-25 09:59:27,654 - root - INFO - Dataset read
+2025-03-25 09:59:27,912 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-25 09:59:27,966 - root - INFO - Identified 1454 corrupted rows.
+2025-03-25 09:59:28,067 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-25 09:59:28,833 - root - INFO - Identified 5268 duplicate rows.
+2025-03-25 09:59:28,833 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-25 09:59:29,292 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-25 09:59:29,349 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-25 09:59:29,564 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-25 10:04:29,928 - root - DEBUG - Attempting to connect to postgres
+2025-03-25 10:04:29,951 - root - DEBUG - Connected successfully to postgres
+2025-03-25 10:04:30,954 - root - INFO - Dataset read
+2025-03-25 10:04:31,265 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-25 10:04:31,326 - root - INFO - Identified 1454 corrupted rows.
+2025-03-25 10:04:31,432 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-25 10:04:32,289 - root - INFO - Identified 5268 duplicate rows.
+2025-03-25 10:04:32,290 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-25 10:04:32,825 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-25 10:04:32,897 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-25 10:04:33,140 - root - ERROR - Unexpected Error: duplicate key value violates unique constraint "customer_pkey"
+DETAIL:  Key (customerid)=(17850) already exists.
+CONTEXT:  COPY customer, line 1
+
+2025-03-25 10:08:15,421 - root - DEBUG - Attempting to connect to retail_db
+2025-03-25 10:08:15,456 - root - DEBUG - Connected successfully to retail_db
+2025-03-25 10:08:16,726 - root - INFO - Dataset read
+2025-03-25 10:08:17,007 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-25 10:08:17,064 - root - INFO - Identified 1454 corrupted rows.
+2025-03-25 10:08:17,171 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-25 10:08:17,984 - root - INFO - Identified 5268 duplicate rows.
+2025-03-25 10:08:17,984 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-25 10:08:18,466 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-25 10:08:18,539 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-25 10:08:18,780 - root - INFO - Inserted 4372 rows into customer
+2025-03-25 10:08:19,223 - root - INFO - Inserted 24446 rows into invoice
+2025-03-25 10:08:19,264 - root - INFO - Inserted 3958 rows into product
+2025-03-25 10:08:34,668 - root - INFO - Inserted 529771 rows into invoice_details
+2025-03-25 10:09:20,412 - root - DEBUG - Attempting to connect to retail_db
+2025-03-25 10:09:20,439 - root - DEBUG - Connected successfully to retail_db
+2025-03-25 10:09:21,340 - root - INFO - Dataset read
+2025-03-25 10:09:21,605 - root - INFO - Missing values per column:
+InvoiceNo         0
+StockCode         0
+Description    1454
+Quantity          0
+InvoiceDate       0
+UnitPrice         0
+CustomerID        0
+Country           0
+dtype: int64.
+2025-03-25 10:09:21,662 - root - INFO - Identified 1454 corrupted rows.
+2025-03-25 10:09:21,753 - root - INFO - corrupted rows removed, New dataset size is (540455, 8).
+2025-03-25 10:09:22,487 - root - INFO - Identified 5268 duplicate rows.
+2025-03-25 10:09:22,487 - root - INFO - duplicate rows removed, New dataset size is (535187, 8).
+2025-03-25 10:09:22,969 - root - INFO - Converted 'InvoiceDate' to datetime and 'Country' to string.
+2025-03-25 10:09:23,026 - root - INFO - Dataset successfully partitioned into Data frames.
+2025-03-25 10:09:23,246 - root - INFO - Inserted 4372 rows into customer
+2025-03-25 10:09:23,695 - root - INFO - Inserted 24446 rows into invoice
+2025-03-25 10:09:23,723 - root - INFO - Inserted 3958 rows into product
+2025-03-25 10:09:38,578 - root - INFO - Inserted 529771 rows into invoice_details

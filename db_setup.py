@@ -1,8 +1,9 @@
+from dotenv import load_dotenv
+import os
 import sys
 import psycopg2
 from psycopg2 import sql
 import logging
-from credentials import DB_CONFIG
 
 # configuring a logger
 logging.basicConfig(
@@ -21,8 +22,17 @@ fh.setFormatter(formatter)
 # add handler to logging
 logging.getLogger().addHandler(fh)
 
+# fetch Database configirations
+load_dotenv(".env")
 
-DEFAULT_DB = "postgres"
+DB_CONFIG = {
+    'dbname': os.environ['DBNAME'],
+    'user': os.environ['USER'],
+    'password': os.environ['PASSWORD'],
+    'host': os.environ['HOST']
+}
+
+DEFAULT_DB = os.environ['DEFAULT_DB']
 
 
 def connect_to_db(dbname_override=None):
