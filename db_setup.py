@@ -18,24 +18,32 @@ fh.setLevel(logging.DEBUG)
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 fh.setFormatter(formatter)
 
-
 # add handler to logging
 logging.getLogger().addHandler(fh)
 
-# fetch Database configirations
+# fetch Database configurations
 load_dotenv(".env")
 
 DB_CONFIG = {
-    'dbname': os.environ['DBNAME'],
-    'user': os.environ['USER'],
-    'password': os.environ['PASSWORD'],
-    'host': os.environ['HOST']
+    "dbname": os.environ["DBNAME"],
+    "user": os.environ["USER"],
+    "password": os.environ["PASSWORD"],
+    "host": os.environ["HOST"],
 }
 
-DEFAULT_DB = os.environ['DEFAULT_DB']
+DEFAULT_DB = os.environ["DEFAULT_DB"]
 
 
 def connect_to_db(dbname_override=None):
+    """Connect to the PostgreSQL database.
+
+    Args:
+        dbname_override (str, optional): The name of the database to connect to.
+                                          If not provided, the default database is used.
+
+    Returns:
+        conn: A connection object to the PostgreSQL database.
+    """
     try:
         config = DB_CONFIG.copy()
         logging.debug(f"Attempting to connect to {config['dbname']}")
@@ -50,6 +58,15 @@ def connect_to_db(dbname_override=None):
 
 
 def database_exists(conn, db_name):
+    """Check if a database exists.
+
+    Args:
+        conn: A connection object to the PostgreSQL database.
+        db_name (str): The name of the database to check.
+
+    Returns:
+        bool: True if the database exists, False otherwise.
+    """
     cur = conn.cursor()
     cur.execute("SELECT 1 FROM pg_database WHERE datname = %s", (db_name,))
     exists = cur.fetchone()
@@ -57,8 +74,12 @@ def database_exists(conn, db_name):
     return True if exists else False
 
 
-# establish a connection
 def create_db():
+    """Create a new database if it does not already exist.
+
+    Returns:
+        bool: True if the database was created, False if it already exists.
+    """
     conn = connect_to_db(DEFAULT_DB)
     conn.autocommit = True
 
@@ -79,8 +100,12 @@ def create_db():
     return True
 
 
-# Establish a new connection to the created database and create the tables
 def create_tables():
+    """Create tables in the database for customer, invoice, product, and invoice details.
+
+    Returns:
+        None
+    """
     conn = None
     cur = None
     try:
@@ -134,13 +159,7 @@ def create_tables():
             conn.close()
         if cur:
             cur.close()
-        logging.debug("Database conncetion closed")
-
-
-# def add_indexes():
-#     conn = connect_to_db()
-#     cur = conn.cursor()
-#     cur.execute("")
+        logging.debug("Database connection closed")
 
 
 if __name__ == "__main__":

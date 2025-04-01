@@ -21,9 +21,15 @@ fh.setFormatter(formatter)
 logging.getLogger().addHandler(fh)
 
 
-# fetch the required data
 def load_data(conn):
+    """Fetch the required data from the database.
 
+    Args:
+        conn: A connection object to the PostgreSQL database.
+
+    Returns:
+        pd.DataFrame: A DataFrame containing customer IDs, stock codes, quantities, and a purchased feature.
+    """
     # establish a connection with the db
     cur = conn.cursor()
 
@@ -47,8 +53,15 @@ def load_data(conn):
     return df
 
 
-# add purchased column and create the pivot table
 def get_matrix(df):
+    """Create a user-item matrix from the DataFrame.
+
+    Args:
+        df (pd.DataFrame): A DataFrame containing customer IDs, stock codes, and purchased features.
+
+    Returns:
+        pd.DataFrame: A pivot table representing the user-item interactions.
+    """
     user_item_matrix = df.pivot_table(
         index="customer_id", columns="stock_code", values="purchased", fill_value=0
     )
@@ -58,9 +71,17 @@ def get_matrix(df):
 
 
 def compute_cosine_similarity(user_item_matrix):
+    """Compute cosine similarity between items.
+
+    Args:
+        user_item_matrix (pd.DataFrame): A pivot table representing the user-item interactions.
+
+    Returns:
+        pd.DataFrame: A DataFrame containing cosine similarity scores between items.
+    """
     user_item_matrix_T = user_item_matrix.transpose()
 
-    # compute consine similarity
+    # compute cosine similarity
     item_similarity = cosine_similarity(user_item_matrix_T)
 
     item_similarity_df = pd.DataFrame(
@@ -74,9 +95,18 @@ def compute_cosine_similarity(user_item_matrix):
     return item_similarity_df
 
 
-# recommendation function
 def compute_recommendations(customer_id, user_item_matrix, item_similarity_df, top_n=5):
+    """Generate recommendations for a given customer based on purchased items.
 
+    Args:
+        customer_id (int): The ID of the customer for whom recommendations are generated.
+        user_item_matrix (pd.DataFrame): A pivot table representing the user-item interactions.
+        item_similarity_df (pd.DataFrame): A DataFrame containing cosine similarity scores between items.
+        top_n (int, optional): The number of top recommendations to return. Defaults to 5.
+
+    Returns:
+        tuple: A tuple containing a list of recommended items and a list of purchased items.
+    """
     if customer_id not in user_item_matrix.index:
         logging.error("Customer ID not found, try different one")
         return
@@ -110,7 +140,17 @@ def compute_recommendations(customer_id, user_item_matrix, item_similarity_df, t
 
 
 def show_recommendations(conn, customer_id, recommended_items, purchased_items):
+    """Display the recommended items and items purchased by the customer.
 
+    Args:
+        conn: A connection object to the PostgreSQL database.
+        customer_id (int): The ID of the customer.
+        recommended_items (list): A list of recommended items.
+        purchased_items (list): A list of items purchased by the customer.
+
+    Returns:
+        None
+    """
     cur = conn.cursor()
 
     logging.info(f"Items bought by customer: {customer_id}")

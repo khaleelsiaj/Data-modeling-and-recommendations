@@ -23,13 +23,25 @@ logging.getLogger().addHandler(fh)
 
 
 def load_data():
+    """Load data from a CSV file.
+
+    Returns:
+        pd.DataFrame: A DataFrame containing the loaded data.
+    """
     df = pd.read_csv("data/Online Retail.csv")
     logging.info("Dataset read")
     return df
 
 
 def transform_data(df):
+    """Transform the DataFrame by cleaning and preparing the data.
 
+    Args:
+        df (pd.DataFrame): The DataFrame to be transformed.
+
+    Returns:
+        pd.DataFrame: A cleaned and transformed DataFrame.
+    """
     # check and remove corrupted rows (where Description is Null and UnitPrice is 0)
     missing_values = df.isnull().sum()
     logging.info(f"Missing values per column:\n{missing_values}.")
@@ -60,7 +72,14 @@ def transform_data(df):
 
 
 def partition_data(df_cleaned):
+    """Partition the cleaned DataFrame into separate DataFrames.
 
+    Args:
+        df_cleaned (pd.DataFrame): The cleaned DataFrame to be partitioned.
+
+    Returns:
+        tuple: A tuple containing DataFrames for customers, invoices, products, and invoice details.
+    """
     # partitioning data into different Data frames
     customer_df = df_cleaned[["CustomerID", "Country"]]
     invoice_df = df_cleaned[["InvoiceNo", "CustomerID", "InvoiceDate"]]
@@ -80,6 +99,17 @@ def partition_data(df_cleaned):
 
 
 def insert_with_copy(cur, df, table_name, columns):
+    """Insert data into the database using the COPY command.
+
+    Args:
+        cur: A cursor object for executing database commands.
+        df (pd.DataFrame): The DataFrame containing data to insert.
+        table_name (str): The name of the table to insert data into.
+        columns (list): The list of columns in the table.
+
+    Returns:
+        int: The number of rows inserted into the table.
+    """
     buffer = io.StringIO()
     df.to_csv(buffer, sep="|", index=False, header=False)
     buffer.seek(0)
@@ -91,6 +121,16 @@ def insert_with_copy(cur, df, table_name, columns):
 
 
 def insert_data(conn, dfs, table_configs):
+    """Insert multiple DataFrames into the database.
+
+    Args:
+        conn: A connection object to the PostgreSQL database.
+        dfs (list): A list of DataFrames to insert.
+        table_configs (list): A list of tuples containing table names and column names.
+
+    Returns:
+        None
+    """
     cur = conn.cursor()
     try:
         for df, (table_name, columns) in zip(dfs, table_configs):
