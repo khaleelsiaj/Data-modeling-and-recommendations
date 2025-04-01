@@ -151,6 +151,11 @@ def show_recommendations(conn, customer_id, recommended_items, purchased_items):
     Returns:
         None
     """
+
+    if recommended_items is None:
+        logging.error(f"no recommendations for customer {customer_id}")
+        return
+
     cur = conn.cursor()
 
     logging.info(f"Items bought by customer: {customer_id}")
