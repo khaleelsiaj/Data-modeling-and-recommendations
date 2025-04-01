@@ -107,7 +107,6 @@ def create_tables():
         None
     """
     conn = None
-    cur = None
     try:
         conn = connect_to_db()
         if not conn:
@@ -146,7 +145,9 @@ def create_tables():
         logging.debug("Executing tables creation query")
         cur.execute(create_tables_sql)
         conn.commit()
-        logging.info("Tables created successfully!")
+        logging.info(
+            "Tables created or already exist: customer, invoice, product, invoice_details"
+        )
 
     except psycopg2.Error as e:
         cur.rollback()
