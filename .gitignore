@@ -2,4 +2,5 @@
 logs/
 modifications.txt
 requirements.txt
-__pycache__
+__pycache__/
+.mypy_cache/
