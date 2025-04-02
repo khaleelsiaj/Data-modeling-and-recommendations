@@ -22,13 +22,13 @@ fh.setFormatter(formatter)
 logging.getLogger().addHandler(fh)
 
 
-def load_data():
+def load_data(filepath="data/Online Retail.csv"):
     """Load data from a CSV file.
 
     Returns:
         pd.DataFrame: A DataFrame containing the loaded data.
     """
-    df = pd.read_csv("data/Online Retail.csv")
+    df = pd.read_csv(filepath)
     logging.info("Dataset read")
     return df
 
@@ -140,7 +140,7 @@ def insert_data(conn, dfs, table_configs):
         conn.commit()
     except psycopg2.Error as e:
         conn.rollback()
-        logging.error(f"Unexpected Error: {e}")
+        logging.error(f"Insert failed for table {table_name}: {e}")
         sys.exit(1)
     finally:
         cur.close()
