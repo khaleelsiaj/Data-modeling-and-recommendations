@@ -109,7 +109,7 @@ def compute_recommendations(customer_id, user_item_matrix, item_similarity_df, t
     """
     if customer_id not in user_item_matrix.index:
         logging.error("Customer ID not found, try different one")
-        return
+        exit(1)
 
     purchased_items = user_item_matrix.loc[customer_id][
         user_item_matrix.loc[customer_id] > 0
@@ -162,26 +162,40 @@ def show_recommendations(conn, customer_id, recommended_items, purchased_items):
     for item in purchased_items:
         cur.execute("SELECT DESCRIPTION FROM product WHERE stockcode = %s;", (item,))
         product_name = cur.fetchone()[0]
-        logging.info(product_name)
+        logging.info(f" {product_name}")
 
     logging.info(f"Recommended items:")
     for item in recommended_items:
         cur.execute("SELECT description FROM product WHERE stockcode = %s;", (item,))
         product_name = cur.fetchone()[0]
-        logging.info(product_name)
+        logging.info(f" {product_name}")
 
 
 if __name__ == "__main__":
-    # essential variables
+    # read customer_id from terminal
+    parser = argparse.ArgumentParser(
+        description="Generate recommendations for a customer"
+    )
+    parser.add_argument(
+        "--customer_id",
+        type=int,
+        required=True,
+        help="Customer ID to generate recommendations for",
+    )
+    parser.add_argument(
+        "--top_n", type=int, default=5, help="Number of recommended items"
+    )
+    args = parser.parse_args()
+
     conn = connect_to_db()
-    customer_id = 12346
 
     df = load_data(conn)
     user_item_matrix = get_matrix(df)
     item_similary_df = compute_cosine_similarity(user_item_matrix)
     recommended_items, purchased_items = compute_recommendations(
-        customer_id,
+        args.customer_id,
         user_item_matrix=user_item_matrix,
         item_similarity_df=item_similary_df,
+        top_n=args.top_n,
     )
-    show_recommendations(conn, customer_id, recommended_items, purchased_items)
+    show_recommendations(conn, args.customer_id, recommended_items, purchased_items)
