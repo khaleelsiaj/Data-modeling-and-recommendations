@@ -10,8 +10,6 @@ This project demonstrates a complete data pipeline for retail data, integrating 
 - [Installation](#installation)
 - [Usage](#usage)
 - [How to Run](#how-to-run)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Project Overview
 This project automates the setup of a PostgreSQL database, performs ETL on a retail dataset, and provides product recommendations. It includes:
@@ -52,8 +50,8 @@ Follow these steps to set up the project locally:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/khaleelsiaj/Data-modeling-and-recommendations.git
+   cd Data-modeling-and-recommendations
    ```
 
 2. **Create a Virtual Environment**:
@@ -124,26 +122,3 @@ Run the recommendation script with a customer ID (e.g., 12346):
 python3 recommendation_model.py --customer_id 12346
 ```
 Check the logs/recommendation_model.log file for output.
-
-## Contributing
-Contributions are welcome! To contribute:
-
-1. Fork the repository.
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add feature"
-   ```
-4. Push to the branch:
-   ```bash
-   git push origin feature-name
-   ```
-5. Open a pull request with a clear description.
-
-For issues or suggestions, please open an issue on GitHub.
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
